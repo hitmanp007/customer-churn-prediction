@@ -163,8 +163,8 @@ customer_churn_project/
 
 ## 👨‍💻 Author
 
-Pranav Sahu
-muskan sahu
+-Pranav Sahu
+-Muskan Sahu
 ---
 
 # customer-churn-prediction
