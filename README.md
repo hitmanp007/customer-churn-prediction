@@ -165,7 +165,7 @@ customer_churn_project/
 
 Pranav Sahu  
 
-MUSKAN SAHU
+Muskan Sahu
 ---
 
 # customer-churn-prediction
