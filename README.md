@@ -106,7 +106,7 @@ An interactive web application is built using Streamlit where users can:
 ### Step 1: Clone the repository
 
 ```bash
-git clone <your-repo-link>
+git clone https://github.com/hitmanp007/customer-churn-prediction.git
 cd customer_churn_project
 ```
 
@@ -163,8 +163,9 @@ customer_churn_project/
 
 ## 👨‍💻 Author
 
-Pranav Sahu
-muskan sahu
+Pranav Sahu  
+
+MUSKAN SAHU
 ---
 
 # customer-churn-prediction
