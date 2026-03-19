@@ -163,8 +163,7 @@ customer_churn_project/
 
 ## 👨‍💻 Author
 
-Pranav Sahu  
-
+Pranav Sahu
 Muskan Sahu
 ---
 
