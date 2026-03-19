@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 📊 Customer Churn Prediction
 
 ## 🚀 Project Overview
@@ -165,3 +166,6 @@ customer_churn_project/
 Pranav Sahu
 muskan sahu
 ---
+=======
+# customer-churn-prediction
+>>>>>>> 7b8eca6962f54e7ed34bf04b1a34f781e76b0b1b
