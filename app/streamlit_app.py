@@ -3,6 +3,14 @@ import pandas as pd
 import pickle
 from pathlib import Path
 
+
+# st.header("📊 Dataset Overview")
+
+# st.write("Total Records:", len(df))
+# st.write("Churn Rate:", df["Churn_Yes"].mean())
+
+# st.dataframe(df.head())
+
 # Load model
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -38,21 +46,26 @@ payment_method = st.selectbox(
 paperless_billing = st.selectbox("Paperless Billing", ["Yes", "No"])
 
 # Create input dataframe
-input_dict = {
-    "tenure": tenure,
-    "MonthlyCharges": monthly_charges,
-    "TotalCharges": total_charges,
-}
+import numpy as np
 
-input_df = pd.DataFrame([input_dict])
+# Create empty input with ALL columns
+input_df = pd.DataFrame(
+    np.zeros((1, len(model_columns))),
+    columns=model_columns
+)
 
-# Convert categorical fields
-input_df["Contract_" + contract] = 1
-input_df["InternetService_" + internet_service] = 1
-input_df["OnlineSecurity_" + online_security] = 1
-input_df["TechSupport_" + tech_support] = 1
-input_df["PaymentMethod_" + payment_method] = 1
-input_df["PaperlessBilling_" + paperless_billing] = 1
+# Fill numeric values
+input_df["tenure"] = tenure
+input_df["MonthlyCharges"] = monthly_charges
+input_df["TotalCharges"] = total_charges
+
+# Fill categorical EXACTLY
+input_df[f"Contract_{contract}"] = 1
+input_df[f"InternetService_{internet_service}"] = 1
+input_df[f"OnlineSecurity_{online_security}"] = 1
+input_df[f"TechSupport_{tech_support}"] = 1
+input_df[f"PaymentMethod_{payment_method}"] = 1
+input_df[f"PaperlessBilling_{paperless_billing}"] = 1
 
 # Align columns with training columns
 for col in model_columns:
@@ -67,7 +80,7 @@ if st.button("Predict Churn"):
     prediction = model.predict(input_df)[0]
     probability = model.predict_proba(input_df)[0][1]
 
-    if prediction == 1:
+    if probability > 0.3:
         st.error(f"⚠ Customer likely to churn. Probability: {probability:.2f}")
     else:
         st.success(f"✅ Customer likely to stay. Probability: {probability:.2f}")
