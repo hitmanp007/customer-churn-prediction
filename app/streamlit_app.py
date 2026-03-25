@@ -2,14 +2,13 @@ import streamlit as st
 import pandas as pd
 import pickle
 from pathlib import Path
+st.sidebar.title("📊 Customer Churn App")
 
-
-# st.header("📊 Dataset Overview")
-
-# st.write("Total Records:", len(df))
-# st.write("Churn Rate:", df["Churn_Yes"].mean())
-
-# st.dataframe(df.head())
+page = st.sidebar.radio("Navigation", [
+    "Prediction",
+    "Dashboard",
+    "Model Insights"
+])
 
 # Load model
 BASE_DIR = Path(__file__).resolve().parent.parent
