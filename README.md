@@ -15,6 +15,11 @@ The goal of this project is to build a machine learning model that predicts:
 
 👉 **Will a customer churn or not?**
 
+### 🚀 Latest Improvements
+- ✅ Fixed incorrect churn predictions (feature mismatch issue)
+- ✅ Implemented proper preprocessing pipeline
+- ✅ Added real-time analytics dashboard (no fake data)
+- ✅ Improved model accuracy and consistency
 ---
 
 ## 📊 Dataset
