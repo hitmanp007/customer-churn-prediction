@@ -107,17 +107,20 @@ def preprocess_input_data(input_dict, model_columns):
     input_df["TotalCharges"] = input_dict["TotalCharges"]
 
     # Step 3: SAFE categorical mapping (robust)
-    def safe_set(prefix, value):
-        for col in model_columns:
-            if col.startswith(prefix + "_") and value in col:
-                input_df[col] = 1
+    # 🔥 EXACT MATCH (FIX)
+    mappings = {
+    "Contract": input_dict["contract"],
+    "InternetService": input_dict["internet_service"],
+    "OnlineSecurity": input_dict["online_security"],
+    "TechSupport": input_dict["tech_support"],
+    "PaymentMethod": input_dict["payment_method"],
+    "PaperlessBilling": input_dict["paperless_billing"]
+    }
 
-    safe_set("Contract", input_dict["contract"])
-    safe_set("InternetService", input_dict["internet_service"])
-    safe_set("OnlineSecurity", input_dict["online_security"])
-    safe_set("TechSupport", input_dict["tech_support"])
-    safe_set("PaymentMethod", input_dict["payment_method"])
-    safe_set("PaperlessBilling", input_dict["paperless_billing"])
+    for key, value in mappings.items():
+        col_name = f"{key}_{value}"
+        if col_name in input_df.columns:
+            input_df[col_name] = 1
 
     return input_df
 
